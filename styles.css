@@ -9,6 +9,7 @@ body {
     background: #000;
     color: white;
     overflow-x: hidden;
+    position: relative;
 }
 
 header {
@@ -60,13 +61,13 @@ header {
 .hero {
     height: 100vh;
     background: url('https://via.placeholder.com/1500x900/000000/ffffff?text=The+Last+Patient+Background') no-repeat center center/cover;
-    background-size: cover;
     position: relative;
     display: flex;
     justify-content: center;
     align-items: center;
     text-align: center;
-    animation: fadeInBackground 5s ease-in-out infinite alternate;
+    background-size: cover;
+    animation: parallax 10s infinite alternate;
 }
 
 .hero-content {
@@ -75,20 +76,27 @@ header {
     padding: 40px;
     border-radius: 10px;
     box-shadow: 0px 15px 30px rgba(0, 0, 0, 0.8);
+    transform: scale(0.9);
+    transition: transform 0.5s ease;
 }
 
-.hero h1 {
+.hero:hover .hero-content {
+    transform: scale(1);
+}
+
+.hero-title {
     font-family: 'Poppins', sans-serif;
     font-size: 56px;
     font-weight: 600;
     color: #fff;
-    animation: fadeInText 2s ease-in-out;
+    animation: fadeInText 3s ease-in-out;
 }
 
-.hero p {
+.hero-description {
     font-size: 20px;
     color: #fff;
     margin: 20px 0;
+    animation: fadeInText 3s ease-in-out 1s;
 }
 
 .cta-btn {
@@ -99,6 +107,7 @@ header {
     color: white;
     cursor: pointer;
     transition: transform 0.3s ease, box-shadow 0.3s ease;
+    border-radius: 5px;
 }
 
 .cta-btn:hover {
@@ -112,6 +121,7 @@ header {
     padding: 100px 20px;
     text-align: center;
     background-color: rgba(0, 0, 0, 0.7);
+    animation: fadeIn 2s ease-in-out;
 }
 
 .feature-card {
@@ -121,6 +131,8 @@ header {
     border-radius: 15px;
     box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.5);
     transition: transform 0.3s ease, background-color 0.3s ease;
+    opacity: 0;
+    animation: fadeInCard 3s forwards;
 }
 
 .feature-card:hover {
@@ -128,11 +140,24 @@ header {
     background-color: rgba(0, 0, 0, 0.9);
 }
 
+.feature-card:nth-child(1) {
+    animation-delay: 0s;
+}
+
+.feature-card:nth-child(2) {
+    animation-delay: 0.2s;
+}
+
+.feature-card:nth-child(3) {
+    animation-delay: 0.4s;
+}
+
 .sound {
     background-color: #222;
     padding: 50px 20px;
     text-align: center;
     color: #bbb;
+    animation: fadeIn 2s ease-in-out;
 }
 
 footer {
@@ -141,21 +166,41 @@ footer {
     background-color: #111;
 }
 
-@keyframes fadeInBackground {
-    0% {
-        background-position: center 0%;
-    }
-    100% {
-        background-position: center 100%;
-    }
-}
-
 @keyframes fadeInText {
     0% {
         opacity: 0;
     }
     100% {
         opacity: 1;
+    }
+}
+
+@keyframes fadeIn {
+    0% {
+        opacity: 0;
+    }
+    100% {
+        opacity: 1;
+    }
+}
+
+@keyframes fadeInCard {
+    0% {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+    100% {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+@keyframes parallax {
+    0% {
+        background-position: center 0%;
+    }
+    100% {
+        background-position: center 10%;
     }
 }
 
@@ -177,4 +222,3 @@ footer {
         display: flex;
     }
 }
-
