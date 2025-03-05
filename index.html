@@ -3,217 +3,56 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>The Last Patient</title>
-    <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700&family=Roboto:wght@400;500&display=swap" rel="stylesheet">
-    <style>
-        /* Global Styles */
-        body {
-            font-family: 'Roboto', sans-serif;
-            margin: 0;
-            padding: 0;
-            background-color: #1e1e1e;
-            color: white;
-            line-height: 1.6;
-        }
-
-        /* Header */
-        header {
-            text-align: center;
-            padding: 40px;
-            background-color: #111;
-        }
-
-        h1 {
-            font-size: 3.5em;
-            font-family: 'Orbitron', sans-serif;
-            color: white;
-            text-transform: uppercase;
-        }
-
-        /* Hero Section */
-        .hero {
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            height: 75vh;
-            background-image: url('background.jpg'); /* Add your background image */
-            background-size: cover;
-            background-position: center;
-            color: white;
-            text-align: center;
-            padding: 0 20px;
-        }
-
-        .hero h2 {
-            font-size: 2.5em;
-            font-weight: 700;
-            margin-bottom: 20px;
-            text-shadow: 3px 3px 8px rgba(0, 0, 0, 0.8);
-        }
-
-        /* Button */
-        .btn {
-            padding: 20px 40px;
-            font-size: 1.5em;
-            color: white;
-            background-color: #333;
-            border: none;
-            border-radius: 8px;
-            text-decoration: none;
-            text-transform: uppercase;
-            cursor: pointer;
-            transition: background-color 0.3s ease, transform 0.3s ease;
-            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.7);
-        }
-
-        .btn:hover {
-            background-color: #444;
-            transform: scale(1.05);
-        }
-
-        .btn:active {
-            transform: scale(0.98);
-        }
-
-        /* Main Content */
-        .content {
-            padding: 40px 20px;
-            text-align: center;
-        }
-
-        .features {
-            display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
-            gap: 30px;
-            margin-top: 30px;
-        }
-
-        .feature-box {
-            background-color: #2a2a2a;
-            padding: 25px;
-            border-radius: 12px;
-            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.6);
-            text-align: center;
-        }
-
-        .feature-box h4 {
-            font-size: 1.6em;
-        }
-
-        .feature-box p {
-            font-size: 1.2em;
-            margin-top: 10px;
-        }
-
-        /* Screenshot Gallery */
-        .screenshots {
-            background-color: #222;
-            padding: 50px 0;
-            text-align: center;
-        }
-
-        .screenshots h3 {
-            font-size: 2.5em;
-            margin-bottom: 20px;
-            font-family: 'Orbitron', sans-serif;
-        }
-
-        .screenshots .gallery {
-            display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
-            gap: 20px;
-            justify-items: center;
-            margin-top: 20px;
-        }
-
-        .screenshots .gallery img {
-            width: 100%;
-            max-width: 350px;
-            height: auto;
-            object-fit: cover;
-            border-radius: 12px;
-            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.7);
-        }
-
-        /* Footer */
-        footer {
-            text-align: center;
-            background-color: #111;
-            padding: 20px 0;
-            margin-top: 50px;
-        }
-
-        footer a {
-            color: white;
-            text-decoration: none;
-            margin: 0 15px;
-            font-size: 1em;
-            transition: color 0.3s ease;
-        }
-
-        footer a:hover {
-            color: #ddd;
-        }
-
-        footer p {
-            font-size: 1.2em;
-        }
-    </style>
+    <title>Coolest Website Ever</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600&family=Poppins:wght@500&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="styles.css">
 </head>
 <body>
+    <header>
+        <nav>
+            <div class="logo">CoolSite</div>
+            <ul class="nav-links">
+                <li><a href="#">Home</a></li>
+                <li><a href="#">Features</a></li>
+                <li><a href="#">About</a></li>
+                <li><a href="#">Contact</a></li>
+            </ul>
+            <div class="menu-icon">
+                <span></span>
+                <span></span>
+                <span></span>
+            </div>
+        </nav>
+    </header>
 
-<header>
-    <h1>The Last Patient</h1>
-</header>
-
-<section class="hero">
-    <div>
-        <h2>Survive Forgotten Ward</h2>
-        <a href="https://www.roblox.com/games/130911313398384/The-Last-Patient" class="btn">Play Now</a>
-    </div>
-</section>
-
-<div class="content">
-    <h3>Welcome to Forgotten Ward</h3>
-    <p>Welcome to Forgotten Ward – an abandoned hospital where time stands still, and the secrets of the past refuse to die. Once a place of healing, the hospital became a nightmare after cruel experiments left behind restless souls. Your only goal is to survive... but the truth won't let you leave so easily.</p>
-
-    <h3>Features</h3>
-    <div class="features">
-        <div class="feature-box">
-            <h4>🩸 Atmospheric Locations</h4>
-            <p>Broken patient rooms, dark hallways, and hidden underground labs.</p>
+    <section class="hero">
+        <div class="hero-content">
+            <h1>Welcome to the Coolest Website Ever</h1>
+            <p>Your dream UI brought to life. Explore the future of design!</p>
+            <button class="cta-btn">Get Started</button>
         </div>
-        <div class="feature-box">
-            <h4>🔑 Challenging Puzzles</h4>
-            <p>Find keys, decipher codes, and uncover hidden documents.</p>
-        </div>
-        <div class="feature-box">
-            <h4>👻 Terrifying Enemies</h4>
-            <p>Avoid ghostly patients and the twisted doctor who still roams the halls.</p>
-        </div>
-        <div class="feature-box">
-            <h4>🎧 Immersive Sound Design</h4>
-            <p>Whispers in the dark, footsteps behind you, and your own heartbeat echoing.</p>
-        </div>
-    </div>
-</div>
+    </section>
 
-<section class="screenshots">
-    <h3>Game Screenshots</h3>
-    <div class="gallery">
-        <img src="screenshot1.png" alt="Screenshot 1">
-        <img src="screenshot2.jpg" alt="Screenshot 2">
-        <img src="screenshot3.jpg" alt="Screenshot 3">
-    </div>
-</section>
+    <section class="features">
+        <div class="feature-card">
+            <h2>Interactive Animations</h2>
+            <p>Micro-interactions for a seamless and engaging experience.</p>
+        </div>
+        <div class="feature-card">
+            <h2>3D Effects</h2>
+            <p>Explore immersive 3D elements that interact with the user.</p>
+        </div>
+        <div class="feature-card">
+            <h2>Dynamic Layout</h2>
+            <p>Fluid design with modern UI elements and smooth transitions.</p>
+        </div>
+    </section>
 
-<footer>
-    <p>&copy; 2025 The Last Patient. All Rights Reserved.</p>
-    <div class="footer-links">
-        <a href="#">Privacy Policy</a> | <a href="#">Terms of Service</a> | <a href="#">Contact</a>
-    </div>
-</footer>
+    <footer>
+        <p>&copy; 2025 CoolSite. All rights reserved.</p>
+    </footer>
 
+    <script src="scripts.js"></script>
 </body>
 </html>
+
