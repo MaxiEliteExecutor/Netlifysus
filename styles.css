@@ -6,7 +6,7 @@
 
 body {
     font-family: 'Inter', sans-serif;
-    background: linear-gradient(45deg, #1a1a1a, #333);
+    background: #000;
     color: white;
     overflow-x: hidden;
 }
@@ -15,11 +15,12 @@ header {
     position: fixed;
     width: 100%;
     padding: 20px;
-    background-color: rgba(0, 0, 0, 0.5);
+    background-color: rgba(0, 0, 0, 0.7);
     z-index: 100;
     display: flex;
     justify-content: space-between;
     align-items: center;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.5);
 }
 
 .nav-links {
@@ -35,11 +36,12 @@ header {
     text-decoration: none;
     color: white;
     font-size: 18px;
+    font-weight: 600;
     transition: color 0.3s ease;
 }
 
 .nav-links a:hover {
-    color: cyan;
+    color: #ff007f;
 }
 
 .menu-icon {
@@ -57,19 +59,30 @@ header {
 
 .hero {
     height: 100vh;
+    background: url('https://via.placeholder.com/1500x900/000000/ffffff?text=The+Last+Patient+Background') no-repeat center center/cover;
+    background-size: cover;
+    position: relative;
     display: flex;
     justify-content: center;
     align-items: center;
-    background: url('https://via.placeholder.com/1500x900') no-repeat center center/cover;
     text-align: center;
+    animation: fadeInBackground 5s ease-in-out infinite alternate;
+}
+
+.hero-content {
+    z-index: 10;
+    background: rgba(0, 0, 0, 0.6);
+    padding: 40px;
+    border-radius: 10px;
+    box-shadow: 0px 15px 30px rgba(0, 0, 0, 0.8);
 }
 
 .hero h1 {
     font-family: 'Poppins', sans-serif;
-    font-size: 48px;
+    font-size: 56px;
     font-weight: 600;
     color: #fff;
-    animation: fadeIn 2s ease-in-out;
+    animation: fadeInText 2s ease-in-out;
 }
 
 .hero p {
@@ -85,11 +98,12 @@ header {
     border: none;
     color: white;
     cursor: pointer;
-    transition: transform 0.3s ease;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
 }
 
 .cta-btn:hover {
     transform: scale(1.1);
+    box-shadow: 0 8px 25px rgba(255, 0, 127, 0.5);
 }
 
 .features {
@@ -97,10 +111,11 @@ header {
     justify-content: space-around;
     padding: 100px 20px;
     text-align: center;
+    background-color: rgba(0, 0, 0, 0.7);
 }
 
 .feature-card {
-    background-color: rgba(0, 0, 0, 0.6);
+    background-color: rgba(0, 0, 0, 0.8);
     padding: 40px;
     width: 30%;
     border-radius: 15px;
@@ -110,16 +125,32 @@ header {
 
 .feature-card:hover {
     transform: scale(1.05);
-    background-color: rgba(0, 0, 0, 0.8);
+    background-color: rgba(0, 0, 0, 0.9);
+}
+
+.sound {
+    background-color: #222;
+    padding: 50px 20px;
+    text-align: center;
+    color: #bbb;
 }
 
 footer {
     text-align: center;
     padding: 20px;
-    background-color: #1a1a1a;
+    background-color: #111;
 }
 
-@keyframes fadeIn {
+@keyframes fadeInBackground {
+    0% {
+        background-position: center 0%;
+    }
+    100% {
+        background-position: center 100%;
+    }
+}
+
+@keyframes fadeInText {
     0% {
         opacity: 0;
     }
@@ -146,3 +177,4 @@ footer {
         display: flex;
     }
 }
+
