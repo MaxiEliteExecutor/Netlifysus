@@ -100,20 +100,23 @@ header {
     animation: fadeInText 3s ease-in-out 1s;
 }
 
+/* Transparent Button */
 .cta-btn {
+    display: inline-block;
     padding: 15px 35px;
     font-size: 20px;
-    background: linear-gradient(45deg, #ff007f, #ff7b00);
-    border: none;
     color: white;
-    cursor: pointer;
-    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    text-decoration: none;
+    border: 2px solid white; /* White border */
+    background: transparent; /* Fully transparent */
     border-radius: 6px;
+    transition: background 0.3s ease, transform 0.3s ease, box-shadow 0.3s ease;
 }
 
 .cta-btn:hover {
+    background: rgba(255, 255, 255, 0.2); /* Subtle glow effect */
     transform: scale(1.1);
-    box-shadow: 0 8px 25px rgba(255, 0, 127, 0.5);
+    box-shadow: 0 8px 25px rgba(255, 255, 255, 0.3);
 }
 
 /* Features Section */
