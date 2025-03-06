@@ -1,3 +1,4 @@
+/* Global Reset */
 * {
     margin: 0;
     padding: 0;
@@ -12,25 +13,24 @@ body {
     position: relative;
 }
 
+/* Header Navigation */
 header {
     position: fixed;
     width: 100%;
-    padding: 20px;
-    background-color: rgba(0, 0, 0, 0.7);
-    z-index: 100;
+    padding: 20px 40px;
+    background-color: rgba(0, 0, 0, 0.8);
+    z-index: 1000;
     display: flex;
     justify-content: space-between;
     align-items: center;
     box-shadow: 0 4px 20px rgba(0, 0, 0, 0.5);
+    transition: background 0.3s ease-in-out;
 }
 
 .nav-links {
     list-style: none;
     display: flex;
-}
-
-.nav-links li {
-    margin: 0 20px;
+    gap: 25px;
 }
 
 .nav-links a {
@@ -52,28 +52,30 @@ header {
 }
 
 .menu-icon span {
-    width: 25px;
+    width: 28px;
     height: 3px;
     background-color: white;
     margin: 5px;
+    transition: transform 0.3s;
 }
 
+/* Hero Section */
 .hero {
     height: 100vh;
     background: url('https://via.placeholder.com/1500x900/000000/ffffff?text=The+Last+Patient+Background') no-repeat center center/cover;
-    position: relative;
     display: flex;
     justify-content: center;
     align-items: center;
     text-align: center;
     background-size: cover;
+    position: relative;
     animation: parallax 10s infinite alternate;
 }
 
 .hero-content {
     z-index: 10;
-    background: rgba(0, 0, 0, 0.6);
-    padding: 40px;
+    background: rgba(0, 0, 0, 0.7);
+    padding: 50px;
     border-radius: 10px;
     box-shadow: 0px 15px 30px rgba(0, 0, 0, 0.8);
     transform: scale(0.9);
@@ -86,28 +88,27 @@ header {
 
 .hero-title {
     font-family: 'Poppins', sans-serif;
-    font-size: 56px;
-    font-weight: 600;
+    font-size: 58px;
+    font-weight: 700;
     color: #fff;
     animation: fadeInText 3s ease-in-out;
 }
 
 .hero-description {
-    font-size: 20px;
-    color: #fff;
+    font-size: 22px;
     margin: 20px 0;
     animation: fadeInText 3s ease-in-out 1s;
 }
 
 .cta-btn {
-    padding: 15px 30px;
-    font-size: 18px;
+    padding: 15px 35px;
+    font-size: 20px;
     background: linear-gradient(45deg, #ff007f, #ff7b00);
     border: none;
     color: white;
     cursor: pointer;
     transition: transform 0.3s ease, box-shadow 0.3s ease;
-    border-radius: 5px;
+    border-radius: 6px;
 }
 
 .cta-btn:hover {
@@ -115,21 +116,24 @@ header {
     box-shadow: 0 8px 25px rgba(255, 0, 127, 0.5);
 }
 
+/* Features Section */
 .features {
     display: flex;
     justify-content: space-around;
+    flex-wrap: wrap;
     padding: 100px 20px;
     text-align: center;
-    background-color: rgba(0, 0, 0, 0.7);
+    background-color: rgba(0, 0, 0, 0.75);
     animation: fadeIn 2s ease-in-out;
 }
 
 .feature-card {
-    background-color: rgba(0, 0, 0, 0.8);
+    background-color: rgba(0, 0, 0, 0.85);
     padding: 40px;
     width: 30%;
+    min-width: 280px;
     border-radius: 15px;
-    box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.5);
+    box-shadow: 0px 4px 15px rgba(0, 0, 0, 0.5);
     transition: transform 0.3s ease, background-color 0.3s ease;
     opacity: 0;
     animation: fadeInCard 3s forwards;
@@ -137,73 +141,65 @@ header {
 
 .feature-card:hover {
     transform: scale(1.05);
-    background-color: rgba(0, 0, 0, 0.9);
+    background-color: rgba(0, 0, 0, 0.95);
 }
 
-.feature-card:nth-child(1) {
-    animation-delay: 0s;
-}
-
-.feature-card:nth-child(2) {
-    animation-delay: 0.2s;
-}
-
-.feature-card:nth-child(3) {
-    animation-delay: 0.4s;
-}
-
+/* Sound Section */
 .sound {
     background-color: #222;
-    padding: 50px 20px;
+    padding: 60px 20px;
     text-align: center;
     color: #bbb;
     animation: fadeIn 2s ease-in-out;
 }
 
+/* Footer */
 footer {
     text-align: center;
     padding: 20px;
     background-color: #111;
 }
 
+/* Animations */
 @keyframes fadeInText {
-    0% {
+    from {
         opacity: 0;
     }
-    100% {
+    to {
         opacity: 1;
     }
 }
 
 @keyframes fadeIn {
-    0% {
+    from {
         opacity: 0;
     }
-    100% {
+    to {
         opacity: 1;
     }
 }
 
 @keyframes fadeInCard {
-    0% {
+    from {
         opacity: 0;
         transform: translateY(20px);
     }
-    100% {
+    to {
         opacity: 1;
         transform: translateY(0);
     }
 }
 
 @keyframes parallax {
-    0% {
+    from {
         background-position: center 0%;
     }
-    100% {
+    to {
         background-position: center 10%;
     }
 }
 
+/* Responsive Styles */
 @media (max-width: 768px) {
     .menu-icon {
         display: flex;
@@ -212,6 +208,13 @@ footer {
     .nav-links {
         display: none;
         flex-direction: column;
+        align-items: center;
+        position: absolute;
+        top: 70px;
+        right: 0;
+        width: 100%;
+        background: rgba(0, 0, 0, 0.9);
+        padding: 20px 0;
     }
 
     .nav-links li {
@@ -220,5 +223,10 @@ footer {
 
     .nav-links.active {
         display: flex;
+    }
+
+    .feature-card {
+        width: 80%;
+        margin-bottom: 30px;
     }
 }
