@@ -101,6 +101,7 @@ header {
 }
 
 .cta-btn {
+    text-decoration: none;
     padding: 15px 35px;
     font-size: 20px;
     background: linear-gradient(45deg, #ff007f, #ff7b00);
@@ -112,6 +113,7 @@ header {
 }
 
 .cta-btn:hover {
+    text-decoration: none;
     transform: scale(1.1);
     box-shadow: 0 8px 25px rgba(255, 0, 127, 0.5);
 }
