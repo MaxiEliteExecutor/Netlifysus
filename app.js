@@ -1,10 +1,9 @@
-const GITHUB_USERNAME = "MaxiEliteExecutor"; // Change to your GitHub username
-const REPO_NAME = "Netlifysus"; // Change to your repo name
+const GITHUB_USERNAME = "MaxiEliteExecutor";  // Replace with your GitHub username
+const REPO_NAME = "Netlifysus";  // Replace with your repo name
 const FILE_PATH = "posts.json";
-const BRANCH = "main"; // Change if you're using a different branch
-const TOKEN = process.env.GITHUB_TOKEN; // From environment variable
+const BRANCH = "main";  // Change if needed
+const TOKEN = "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";  // Replace with your GitHub token
 
-// Define API_URL at the top of the file to avoid referencing it before initialization
 // Ensure API_URL is defined before any functions use it
 const API_URL = `https://api.github.com/repos/${GITHUB_USERNAME}/${REPO_NAME}/contents/${FILE_PATH}`;
 
