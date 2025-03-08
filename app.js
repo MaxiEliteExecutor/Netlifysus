@@ -1,10 +1,32 @@
+const GITHUB_USERNAME = "MaxiEliteExecutor"; // Change to your GitHub username
+const REPO_NAME = "Netlifysus"; // Change to your repo name
+const FILE_PATH = "posts.json";
+const BRANCH = "main"; // Change if you're using a different branch
+const TOKEN = "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"; // Keep this secure!
+
+const API_URL = `https://api.github.com/repos/${GITHUB_USERNAME}/${REPO_NAME}/contents/${FILE_PATH}`;
+
 document.addEventListener("DOMContentLoaded", loadDiscussions);
 
-function loadDiscussions() {
-    const discussions = JSON.parse(localStorage.getItem("discussions")) || [];
-    displayDiscussions(discussions);
+// Load discussions from GitHub
+async function loadDiscussions() {
+    try {
+        const response = await fetch(API_URL, {
+            headers: { "Authorization": `token ${TOKEN}` }
+        });
+        const data = await response.json();
+
+        if (data.content) {
+            const content = atob(data.content);
+            const discussions = JSON.parse(content);
+            displayDiscussions(discussions);
+        }
+    } catch (error) {
+        console.error("Error loading discussions:", error);
+    }
 }
 
+// Display discussions
 function displayDiscussions(discussions) {
     const postsContainer = document.getElementById("postsContainer");
     postsContainer.innerHTML = "<h2>Community Posts</h2>";
@@ -25,23 +47,53 @@ function displayDiscussions(discussions) {
     });
 }
 
-function submitPost() {
+// Submit new post
+async function submitPost() {
     const postText = document.getElementById("discussionText").value;
     if (postText.trim() === "") {
         alert("Please write something before submitting.");
         return;
     }
 
-    const newPost = {
-        content: postText,
-        date: new Date().toLocaleString()
-    };
+    try {
+        // Get current discussions
+        const response = await fetch(API_URL, {
+            headers: { "Authorization": `token ${TOKEN}` }
+        });
+        const data = await response.json();
 
-    const discussions = JSON.parse(localStorage.getItem("discussions")) || [];
-    discussions.push(newPost);
+        let discussions = [];
+        if (data.content) {
+            const content = atob(data.content);
+            discussions = JSON.parse(content);
+        }
 
-    localStorage.setItem("discussions", JSON.stringify(discussions));
+        // Add new post
+        const newPost = { content: postText, date: new Date().toLocaleString() };
+        discussions.push(newPost);
 
-    document.getElementById("discussionText").value = "";
-    loadDiscussions();
+        // Convert JSON to Base64
+        const updatedContent = btoa(JSON.stringify(discussions, null, 2));
+
+        // Update file on GitHub
+        await fetch(API_URL, {
+            method: "PUT",
+            headers: {
+                "Authorization": `token ${TOKEN}`,
+                "Content-Type": "application/json"
+            },
+            body: JSON.stringify({
+                message: "Update posts.json",
+                content: updatedContent,
+                sha: data.sha // Required to update the file
+            })
+        });
+
+        document.getElementById("discussionText").value = "";
+        loadDiscussions(); // Reload discussions
+
+    } catch (error) {
+        console.error("Error submitting post:", error);
+    }
 }
+
