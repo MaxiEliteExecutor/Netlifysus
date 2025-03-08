@@ -5,6 +5,7 @@ const BRANCH = "main"; // Change if you're using a different branch
 const TOKEN = process.env.GITHUB_TOKEN; // From environment variable
 
 // Define API_URL at the top of the file to avoid referencing it before initialization
+// Ensure API_URL is defined before any functions use it
 const API_URL = `https://api.github.com/repos/${GITHUB_USERNAME}/${REPO_NAME}/contents/${FILE_PATH}`;
 
 document.addEventListener("DOMContentLoaded", loadDiscussions);
@@ -13,7 +14,7 @@ async function loadDiscussions() {
     try {
         const response = await fetch(API_URL, {
             headers: {
-                "Authorization": `token ${TOKEN}`
+                "Authorization": `token ${TOKEN}`,
             }
         });
 
@@ -46,7 +47,7 @@ async function submitPost() {
     try {
         const response = await fetch(API_URL, {
             headers: {
-                "Authorization": `token ${TOKEN}`
+                "Authorization": `token ${TOKEN}`,
             }
         });
 
