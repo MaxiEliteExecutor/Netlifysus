@@ -4,50 +4,38 @@ const FILE_PATH = "posts.json";
 const BRANCH = "main"; // Change if you're using a different branch
 const TOKEN = process.env.GITHUB_TOKEN; // From environment variable
 
-const API_URL = `https://api.github.com/repos/MaxiEliteExecutor/Netlifysus/contents/posts.json`;
+// Define API_URL at the top of the file to avoid referencing it before initialization
+const API_URL = `https://api.github.com/repos/${GITHUB_USERNAME}/${REPO_NAME}/contents/${FILE_PATH}`;
 
 document.addEventListener("DOMContentLoaded", loadDiscussions);
 
-// Load discussions from GitHub
 async function loadDiscussions() {
     try {
         const response = await fetch(API_URL, {
-            headers: { "Authorization": `token ${TOKEN}` }
+            headers: {
+                "Authorization": `token ${TOKEN}`
+            }
         });
+
+        if (!response.ok) {
+            throw new Error(`GitHub API Error: ${response.statusText}`);
+        }
+
         const data = await response.json();
 
         if (data.content) {
-            const content = atob(data.content);
-            const discussions = JSON.parse(content);
+            const decodedContent = atob(data.content.trim());
+            const discussions = decodedContent ? JSON.parse(decodedContent) : [];
             displayDiscussions(discussions);
+        } else {
+            console.warn("No content found in posts.json");
         }
     } catch (error) {
         console.error("Error loading discussions:", error);
+        document.getElementById("postsContainer").innerHTML = "<p>Failed to load posts.</p>";
     }
 }
 
-// Display discussions
-function displayDiscussions(discussions) {
-    const postsContainer = document.getElementById("postsContainer");
-    postsContainer.innerHTML = "<h2>Community Posts</h2>";
-
-    discussions.forEach(post => {
-        const postDiv = document.createElement("div");
-        postDiv.classList.add("post");
-
-        const postContent = document.createElement("p");
-        postContent.textContent = post.content;
-
-        const postDate = document.createElement("small");
-        postDate.textContent = `Posted on: ${post.date}`;
-
-        postDiv.appendChild(postContent);
-        postDiv.appendChild(postDate);
-        postsContainer.appendChild(postDiv);
-    });
-}
-
-// Submit new post
 async function submitPost() {
     const postText = document.getElementById("discussionText").value;
     if (postText.trim() === "") {
@@ -56,26 +44,25 @@ async function submitPost() {
     }
 
     try {
-        // Get current discussions
         const response = await fetch(API_URL, {
-            headers: { "Authorization": `token ${TOKEN}` }
+            headers: {
+                "Authorization": `token ${TOKEN}`
+            }
         });
-        const data = await response.json();
 
-        let discussions = [];
-        if (data.content) {
-            const content = atob(data.content);
-            discussions = JSON.parse(content);
+        if (!response.ok) {
+            throw new Error(`GitHub API Error: ${response.statusText}`);
         }
 
-        // Add new post
+        const data = await response.json();
+        const content = atob(data.content); // Decode Base64 content
+        let discussions = JSON.parse(content);
+
         const newPost = { content: postText, date: new Date().toLocaleString() };
         discussions.push(newPost);
 
-        // Convert JSON to Base64
         const updatedContent = btoa(JSON.stringify(discussions, null, 2));
 
-        // Update file on GitHub
         await fetch(API_URL, {
             method: "PUT",
             headers: {
@@ -91,9 +78,8 @@ async function submitPost() {
 
         document.getElementById("discussionText").value = "";
         loadDiscussions(); // Reload discussions
-
     } catch (error) {
         console.error("Error submitting post:", error);
+        alert("Failed to submit post.");
     }
 }
-
