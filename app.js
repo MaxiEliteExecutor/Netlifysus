@@ -2,7 +2,7 @@ const GITHUB_USERNAME = "MaxiEliteExecutor"; // Change to your GitHub username
 const REPO_NAME = "Netlifysus"; // Change to your repo name
 const FILE_PATH = "posts.json";
 const BRANCH = "main"; // Change if you're using a different branch
-const TOKEN = "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"; // Keep this secure!
+const TOKEN = process.env.GITHUB_TOKEN; // From environment variable
 
 const API_URL = `https://api.github.com/repos/MaxiEliteExecutor/Netlifysus/contents/posts.json`;
 
